@@ -20,14 +20,14 @@ def format_xlsx():
             if cell.value is not None:
                 cell.value = re.sub(r'[^\w\s]|[\d]', '', str(cell.value))
 
-    colunas = ['C', 'E', 'G', 'I']
+    colunas = ['G']
 
     # Percorra todas as colunas desejadas e remova tudo que não é número
     for coluna in colunas:
         # Selecione a coluna pelo cabeçalho
         col = worksheet[coluna]
         # Percorra as células na coluna e remova tudo que não é número
-        for cell in col:
+        for cell in col[1:]:
             if cell.value is not None:
                 cell.value = re.sub(r'[^\d.\/\-]', '', str(cell.value))
 
