@@ -3,7 +3,7 @@ import re
 
 def format_xlsx():
     # Carregue o arquivo Excel
-    workbook = openpyxl.load_workbook('./../Result.xlsx')
+    workbook = openpyxl.load_workbook('./../PlanilhaSemFormatacao.xlsx')
 
     # Selecione a planilha desejada
     worksheet = workbook['Sheet1']
@@ -20,7 +20,7 @@ def format_xlsx():
             if cell.value is not None:
                 cell.value = re.sub(r'[^\w\s]|[\d]', '', str(cell.value))
 
-    colunas = ['G']
+    colunas = ['C', 'E', 'G', 'I']
 
     # Percorra todas as colunas desejadas e remova tudo que não é número
     for coluna in colunas:
@@ -32,6 +32,6 @@ def format_xlsx():
                 cell.value = re.sub(r'[^\d.\/\-]', '', str(cell.value))
 
     # Salve o arquivo Excel formatado
-    workbook.save('./../FormattedResult.xlsx')
+    workbook.save('./../ResultadoFinal.xlsx')
 
 format_xlsx()
